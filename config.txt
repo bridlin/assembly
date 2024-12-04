@@ -1,0 +1,2 @@
+run=run30
+input_list=("1845_S3_" "1587_S1_" "3438_S2_" "2531_S4_" "Undetermined_S0_")

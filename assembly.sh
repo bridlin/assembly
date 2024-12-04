@@ -14,12 +14,15 @@
 module load cutadapt/4.0
 module load trimmomatic/0.39
 module load fastqc/0.11.9
+module load megahit/1.2.
+module load velvet/1.2.10
+module load spades/3.15.5
 
 
 source assembly/config.txt
 
 fastq_directory=$run\_fastq
-output_dir=kraken2-results_$run\_5prime-trimmed
+output_dir=$run\_output
 
 mkdir $output_dir
 
@@ -47,3 +50,5 @@ fastqc $fastq_directory/$sample\L001_R1_001_3trimmed_q20.fastq.gz \
     --outdir $output_dir &&
 fastqc $fastq_directory/$sample\L001_R2_001_3trimmed_q20.fastq.gz \
     --outdir $output_dir &&
+megahit -1 $fastq_directory/$sample\L001_R1_001_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\L001_R2_001_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly  \
+;done
