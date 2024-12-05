@@ -17,7 +17,7 @@ module load fastqc/0.11.9
 module load megahit/1.2.9  
 module load velvet/1.2.10
 module load spades/3.15.5
-
+module load multiqc/1.13
 
 source assembly/config.txt
 
@@ -52,4 +52,7 @@ fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
     --outdir $output_dir &&
 megahit -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly  \
 spades.py -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly \
+multiqc   \
+    $output_dir \
+    --outdir $output_dir 
 ;done
