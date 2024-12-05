@@ -14,7 +14,7 @@
 module load cutadapt/4.0
 module load trimmomatic/0.39
 module load fastqc/0.11.9
-module load megahit/1.2.
+module load megahit/1.2.9  
 module load velvet/1.2.10
 module load spades/3.15.5
 
