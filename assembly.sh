@@ -54,5 +54,5 @@ megahit -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/
 spades.py -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly \
 multiqc   \
     $output_dir \
-    --outdir $output_dir 
+    --outdir $output_dir  \
 ;done
