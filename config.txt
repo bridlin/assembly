@@ -1,2 +1,2 @@
 run=assembly
-input_list=("F6_")
+input_list=("F6_" "F7_" "F8_")
