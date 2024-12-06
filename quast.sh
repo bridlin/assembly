@@ -23,7 +23,7 @@ source assembly/config.txt
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-./quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
+quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
     assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
     assembly_output/$sample\_Spades_readassembly/contigs.fasta \
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta \
