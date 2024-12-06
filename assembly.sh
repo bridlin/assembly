@@ -50,8 +50,8 @@ for sample in "${input_list[@]}"; do
 #     --outdir $output_dir &&
 # fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
 #     --outdir $output_dir &&
-# megahit -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly  \
-spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Spades_readassembly &&
+ megahit -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly  \
+#spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Spades_readassembly &&
 multiqc   \
     $output_dir \
     --outdir $output_dir  \
