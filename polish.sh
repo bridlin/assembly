@@ -20,8 +20,10 @@ source assembly/config.txt
 fastq_directory=$run\_fastq
 output_dir=$run\_output
 
-mkdir output_dir_bowtie=$run\_output/bowtie2
-mkdir output_dir_pilon=$run\_output/pilon
+output_dir_bowtie=$run\_output/bowtie2
+output_dir_pilon=$run\_output/pilon
+mkdir output_dir_bowtie
+mkdir output_dir_pilon
 
 megahit_assembly=$output_dir/F6__Megahit_readassembly/final.contigs.fa
 spades_assembly=$output_dir/F6__Spades_readassembly/scaffolds.fasta
