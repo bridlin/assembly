@@ -28,10 +28,13 @@ mkdir $output_dir_pilon
 megahit_assembly=$output_dir/F6__Megahit_readassembly/final.contigs.fa
 spades_assembly=$output_dir/F6__Spades_readassembly/scaffolds.fasta
 
+echo $megahit_assembly
+echo $spades_assembly
+
+
 for sample in "${input_list[@]}"; do
 echo $sample &&
 bowtie2 \
-    -k1 \
     -x $megahit_assembly \
     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
     -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
@@ -48,7 +51,6 @@ pilon --genome $megahit_assembly --bam $output_dir/bowtie/$sample\aln-pe_$genome
 for sample in "${input_list[@]}"; do
 echo $sample &&
 bowtie2 \
-    -k1 \
     -x $spades_assembly \
     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
     -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
