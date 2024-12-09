@@ -34,6 +34,8 @@ echo $spades_assembly
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
+bowtie2-build \
+    -f $megahit_assembly final.contigs
 bowtie2 \
     -x $megahit_assembly \
     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
@@ -50,6 +52,8 @@ pilon --genome $megahit_assembly --bam $output_dir/bowtie/$sample\aln-pe_$genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
+bowtie2-build \
+    -f $megahit_assembly scaffolds
 bowtie2 \
     -x $spades_assembly \
     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
