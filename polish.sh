@@ -89,8 +89,7 @@ for iter in "${iter_list[@]}"; do
             --outdir $output_dir_pilon \
             --threads 4  \
             --changes \
-    ;done 
-;done
+    ;done ;done
 
 
 
