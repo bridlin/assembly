@@ -3,12 +3,12 @@
 #SBATCH -o slurm.%N.%j.out
 #SBATCH -e slurm.%N.%j.err
 #SBATCH --mail-type END
-#SBATCH --mail-user b-barckmann@chu-montpellier.fr
+#SBATCH --mail-user bridlin.barckmann@umontpellier.fr
 #
 #
 #SBATCH --partition fast
 #SBATCH --cpus-per-task 4
-#SBATCH --mem  250GB
+#SBATCH --mem  128GB
 
 
 module load bowtie2/2.5.1
@@ -50,7 +50,15 @@ echo $sample &&
 # samtools index $output_dir/bowtie2/$sample\aln-pe\_mh_sorted.bam &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\_mh.sam &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\_mh.sam.bam &&
-pilon --genome $megahit_assembly --bam $output_dir/bowtie2/$sample\aln-pe\_mh_sorted.bam --output $output_dir/pilon/$sample\_pilon_mh --outdir $output_dir/pilon --threads 4  --changes --tracks \
+pilon \
+    -Xmx8g \
+    --genome $megahit_assembly \
+    --bam $output_dir/bowtie2/$sample\aln-pe\_mh_sorted.bam \
+    --output $output_dir/pilon/$sample\_pilon_mh \
+    --outdir $output_dir/pilon \
+    --threads 4  \
+    --changes \
+    --tracks \
 ; done
 
 # for sample in "${input_list[@]}"; do
