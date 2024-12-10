@@ -21,23 +21,23 @@ source assembly/config.txt
 
 
 
-for sample in "${input_list[@]}"; do
-echo $sample &&
-quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
-    assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
-    assembly_output/$sample\_Spades_readassembly/contigs.fasta \
-    -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta \
-    -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Orf50.gff \
-    -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-    -o assembly_output/quast_$sample\output \
-; done
+# for sample in "${input_list[@]}"; do
+# echo $sample &&
+# quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
+#     assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
+#     assembly_output/$sample\_Spades_readassembly/contigs.fasta \
+#     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta \
+#     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Orf50.gff \
+#     -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
+#     -o assembly_output/quast_$sample\output \
+# ; done
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
- quast.py assembly_output/pilon/$sample\__pilon_mh.fasta \
-    assembly_output/pilon/$sample\__pilon_sp.fasta  \
+ quast.py assembly_output/pilon/$sample\__pilon_mh_1.fasta \
+    assembly_output/pilon/$sample\__pilon_sp_1.fasta  \
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta \
     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Orf50.gff \
     -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-    -o assembly_output/quast_$sample\_pilon_output \
+    -o assembly_output/quast_$sample\_pilon_1_output \
 ; done
