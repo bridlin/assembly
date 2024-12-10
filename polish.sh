@@ -61,9 +61,8 @@ pilon \
     --tracks \
 ; done
 
-# for sample in "${input_list[@]}"; do
-
-# echo $sample &&
+for sample in "${input_list[@]}"; do
+echo $sample &&
 # bowtie2-build \
 #     -f $spades_assembly $spades_assembly
 # bowtie2 \
@@ -77,5 +76,13 @@ pilon \
 # samtools index $output_dir/bowtie2/$sample\aln-pe\_sp_sorted.bam &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\_sp.sam &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\_sp.sam.bam &&
-# pilon --genome $spades_assembly --bam $output_dir/bowtie2/$sample\aln-pe\_sp_sorted.bam --output $output_dir/pilon/$sample\_pilon_sp --outdir $output_dir/pilon --threads 4  --changes --tracks \
-# ; done
+pilon \
+    -Xmx8g \
+    --genome $spades_assembly \
+    --bam $output_dir/bowtie2/$sample\aln-pe\_sp_sorted.bam \
+    --output $sample\_pilon_sp \
+    --outdir $output_dir/pilon \
+    --threads 4  \
+    --changes \
+    --tracks \
+; done
