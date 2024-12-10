@@ -54,7 +54,7 @@ pilon \
     -Xmx8g \
     --genome $megahit_assembly \
     --bam $output_dir/bowtie2/$sample\aln-pe\_mh_sorted.bam \
-    --output $output_dir/pilon/$sample\_pilon_mh \
+    --output $sample\_pilon_mh \
     --outdir $output_dir/pilon \
     --threads 4  \
     --changes \
