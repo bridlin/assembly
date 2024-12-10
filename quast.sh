@@ -34,7 +34,7 @@ source assembly/config.txt
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
- quast.py assembly_output/pilon/$sample\_pilon_mh_1.fasta \
+quast.py assembly_output/pilon/$sample\_pilon_mh_1.fasta \
     assembly_output/pilon/$sample\_pilon_sp_1.fasta  \
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta \
     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Orf50.gff \
