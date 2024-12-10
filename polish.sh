@@ -92,7 +92,7 @@ for iter in "${iter_list[@]}"; do
         --threads 4  \
         --changes \
     ;done
-; done
+;done
 
 
 
