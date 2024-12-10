@@ -66,9 +66,7 @@ for iter in "${iter_list[@]}"; do
         --output $sample\_pilon_mh_$y \
         --outdir $output_dir_pilon \
         --threads 4  \
-        --changes \
-    ;done
-    for sample in "${input_list[@]}"; do
+        --changes &&
     echo $sample &&
     bowtie2-build \
         -f $spades_assembly $spades_assembly
