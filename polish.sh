@@ -41,32 +41,32 @@ echo $fastq_directory
 for iter in "${iter_list[@]}"; do
     y=$(($iter+1)) 
     megahit_assembly=$output_dir_pilon\/F6__pilon_mh_$iter.fasta
-    spades_assembly=$output_dir_pilon\F6__pilon_sp_$iter.fasta
+    spades_assembly=$output_dir_pilon\/F6__pilon_sp_$iter.fasta
     echo $megahit_assembly
     echo $spades_assembly
     for sample in "${input_list[@]}"; do
-        echo $sample &&
-        bowtie2-build \
-            -f $megahit_assembly $megahit_assembly
-        bowtie2 \
-            -x $megahit_assembly \
-            -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-            -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
-            -S $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam \
-            2> $output_dir/bowtie2/$sample\_bowtie_mh_$iter\.log &&
-        samtools view -S -b $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam > $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam.bam &&
-        samtools sort $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe\_mh_$iter\_sorted.bam
-        samtools index $output_dir/bowtie2/$sample\aln-pe\_mh_$iter\_sorted.bam &&
-        rm -f  $output_dir_bowtie/$sample\aln-pe_mh_$iter\.sam  &&
-        rm -f  $output_dir_bowtie/$sample\aln-pe_mh_$iter\.sam.bam &&
-        pilon \
-            -Xmx8g \
-            --genome $megahit_assembly \
-            --bam $output_dir_bowtie/$sample\aln-pe\_mh_$iter\_sorted.bam \
-            --output $sample\_pilon_mh_$y \
-            --outdir $output_dir_pilon \
-            --threads 4  \
-            --changes &&
+        # echo $sample &&
+        # bowtie2-build \
+        #     -f $megahit_assembly $megahit_assembly
+        # bowtie2 \
+        #     -x $megahit_assembly \
+        #     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
+        #     -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
+        #     -S $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam \
+        #     2> $output_dir/bowtie2/$sample\_bowtie_mh_$iter\.log &&
+        # samtools view -S -b $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam > $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam.bam &&
+        # samtools sort $output_dir/bowtie2/$sample\aln-pe_mh_$iter\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe\_mh_$iter\_sorted.bam
+        # samtools index $output_dir/bowtie2/$sample\aln-pe\_mh_$iter\_sorted.bam &&
+        # rm -f  $output_dir_bowtie/$sample\aln-pe_mh_$iter\.sam  &&
+        # rm -f  $output_dir_bowtie/$sample\aln-pe_mh_$iter\.sam.bam &&
+        # pilon \
+        #     -Xmx8g \
+        #     --genome $megahit_assembly \
+        #     --bam $output_dir_bowtie/$sample\aln-pe\_mh_$iter\_sorted.bam \
+        #     --output $sample\_pilon_mh_$y \
+        #     --outdir $output_dir_pilon \
+        #     --threads 4  \
+        #     --changes &&
         echo $sample &&
         bowtie2-build \
             -f $spades_assembly $spades_assembly
