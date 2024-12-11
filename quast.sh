@@ -29,7 +29,7 @@ quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
     -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-    -o assembly_output/quast_$sample\output \
+    -o assembly_output/quast_$sample\output_2 \
 ; done
 
 # for sample in "${input_list[@]}"; do
@@ -39,7 +39,7 @@ quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
 #     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
 #     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
 #     -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-#     -o assembly_output/quast_$sample\_pilon_1_output \
+#     -o assembly_output/quast_$sample\_pilon_1_output_2 \
 # ; done
 
 
