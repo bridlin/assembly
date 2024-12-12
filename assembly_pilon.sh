@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task 4
 #SBATCH --mem  128GB
 
-
+echo "test"
 module load bowtie2/2.5.1
 module load samtools/1.21
 module load pilon/1.23
