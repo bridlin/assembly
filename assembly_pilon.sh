@@ -42,7 +42,7 @@ echo $sample &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam &&
 # rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
 pilon \
-    -Xmx100g \
+    -Xmx32g \
     --genome $genome \
     --bam $output_dir/bowtie2/$sample\aln-pe\_sorted.bam \
     --output $sample\_bowtie_pilon_assembly \
