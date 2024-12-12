@@ -15,21 +15,31 @@ module load bowtie2/2.5.1
 module load samtools/1.21
 module load pilon/1.23
 
+echo "test2"
+
 source assembly/config.txt
+
+echo "test3"
 
 fastq_directory=$run\_fastq
 output_dir=$run\_output
 genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
 
+echo "test4"
+
 mkdir -p $output_dir/bowtie2
 mkdir -p $output_dir/bwa
 mkdir -p $output_dir/pilon_assembly
+
+echo "test5"
+
 
 echo $genome
 
 # bowtie2-build -f $genome $genome 
 
 for sample in "${input_list[@]}"; do
+echo "test6"
 echo $sample &&
 # bowtie2 \
 #     -x $genome \
