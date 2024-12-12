@@ -25,8 +25,9 @@ mkdir -p $output_dir/bowtie2
 mkdir -p $output_dir/bwa
 mkdir -p $output_dir/pilon_assembly
 
-bowtie2-build \
-    -f $genome $genome 
+echo $genome
+
+# bowtie2-build -f $genome $genome 
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
