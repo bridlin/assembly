@@ -25,10 +25,11 @@ mkdir -p $output_dir/bowtie2
 mkdir -p $output_dir/bwa
 mkdir -p $output_dir/pilon_assembly
 
+bowtie2-build \
+    -f $genome $genome 
+
 for sample in "${input_list[@]}"; do
 echo $sample &&
-bowtie2-build \
-    -f $genome $genome &&
 bowtie2 \
     -x $genome \
     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
@@ -41,7 +42,7 @@ samtools index $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
 rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam &&
 rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
 pilon \
-    -Xmx8g \
+    -Xmx100g \
     --genome $genome \
     --bam $output_dir/bowtie2/$sample\aln-pe\_sorted.bam \
     --output $sample\_bowtie_pilon_assembly \
@@ -53,10 +54,11 @@ pilon \
     --fix snps,indels \
 ; done
 
+bwa index $genome 
+
 for sample in "${input_list[@]}"; do
 echo $sample &&
-bwa index $genome && 
-bwa-mem2 \
+ bwa-mem2 \
     mem $genome \  
     $fastq_directory/$sample\1_3trimmed_q20.fastq.gz\
     $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
@@ -67,7 +69,7 @@ samtools index $output_dir/bwa/$sample\aln-pe\_sorted.bam &&
 rm -f  $output_dir/bwa/$sample\aln-pe\.sam &&
 rm -f  $output_dir/bwa/$sample\aln-pe\.sam.bam &&
 pilon \
-    -Xmx8g \
+    -Xmx100g \
     --genome $genome \
     --bam $output_dir/bwa/$sample\aln-pe\_sorted.bam \
     --output $sample\_bwa_pilon_assembly \
