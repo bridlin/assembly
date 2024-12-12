@@ -49,6 +49,8 @@ pilon \
     --threads 4  \
     --changes \
     --tracks \
+    --vcf \
+    --fix snps,indels \
 ; done
 
 for sample in "${input_list[@]}"; do
@@ -73,4 +75,6 @@ pilon \
     --threads 4  \
     --changes \
     --tracks \
+    --vcf \
+    --fix snps,indels \
 ; done

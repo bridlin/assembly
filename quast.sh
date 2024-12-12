@@ -21,16 +21,16 @@ source assembly/config.txt
 
 
 
-for sample in "${input_list[@]}"; do
-echo $sample &&
-quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
-    assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
-    assembly_output/$sample\_Spades_readassembly/contigs.fasta \
-    -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
-    -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
-    -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-    -o assembly_output/quast_$sample\output_2 \
-; done
+# for sample in "${input_list[@]}"; do
+# echo $sample &&
+# quast.py assembly_output/$sample\_Megahit_readassembly/final.contigs.fa \
+#     assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
+#     assembly_output/$sample\_Spades_readassembly/contigs.fasta \
+#     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
+#     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
+#     -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
+#     -o assembly_output/quast_$sample\output_2 \
+# ; done
 
 # for sample in "${input_list[@]}"; do
 # echo $sample &&
@@ -60,17 +60,17 @@ for sample in "${input_list[@]}"; do
         -o assembly_output/quast_$sample\_pilon_iter_mh_output \
 ; done
 
-# for sample in "${input_list[@]}"; do
-#     echo $sample &&
-#     quast.py \
-#         assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
-#         assembly_output/pilon/$sample\_pilon_sp_1.fasta \
-#         assembly_output/pilon/$sample\_pilon_sp_2.fasta \
-#         assembly_output/pilon/$sample\_pilon_sp_3.fasta \
-#         assembly_output/pilon/$sample\_pilon_sp_4.fasta \
-#         assembly_output/pilon/$sample\_pilon_sp_5.fasta \
-#         -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
-#         -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
-#         -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
-#         -o assembly_output/quast_$sample\_pilon_iter_sp_output \
-# ; done
+for sample in "${input_list[@]}"; do
+    echo $sample &&
+    quast.py \
+        assembly_output/$sample\_Spades_readassembly/scaffolds.fasta \
+        assembly_output/pilon/$sample\_pilon_sp_1.fasta \
+        assembly_output/pilon/$sample\_pilon_sp_2.fasta \
+        assembly_output/pilon/$sample\_pilon_sp_3.fasta \
+        assembly_output/pilon/$sample\_pilon_sp_4.fasta \
+        assembly_output/pilon/$sample\_pilon_sp_5.fasta \
+        -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
+        -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
+        -1 assembly_fastq/$sample\1_3trimmed_q20.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20.fastq.gz \
+        -o assembly_output/quast_$sample\_pilon_iter_sp_output \
+; done
