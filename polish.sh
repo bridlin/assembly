@@ -27,8 +27,6 @@ mkdir $output_dir_pilon
 
 assemblydic=$run\_output/pilon_$run\
 
-assembly_output/pilon_assembly/F8__bwa_pilon_assembly.fasta
-
 
 assemblyprefix=bowtie_pilon_assembly
 #assemblyprefix2=sp
@@ -46,6 +44,7 @@ echo $fastq_directory
 for sample in "${input_list[@]}"; do
 echo $sample &&
 assembly=$assemblydic\/$sample\$assemblyprefix\.fasta &&
+echo $assembly &&
 bowtie2-build \
     -f $megahit_assembly $megahit_assembly
 bowtie2 \
