@@ -44,7 +44,7 @@ echo $fastq_directory
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-assembly=$assemblydic\/$sample$assemblyprefix\.fasta &&
+assembly=$assemblydic\/$sample\_$assemblyprefix\.fasta &&
 echo $assembly &&
 bowtie2-build \
     -f $megahit_assembly $megahit_assembly
@@ -127,6 +127,7 @@ for iter in "${iter_list[@]}"; do
             --outdir $output_dir_pilon \
             --threads 4  \
             --changes \
+    ;done ;done    
         # bowtie2-build \
         #     -f $spades_assembly $spades_assembly
         # bowtie2 \
@@ -148,7 +149,7 @@ for iter in "${iter_list[@]}"; do
         #     --outdir $output_dir_pilon \
         #     --threads 4  \
         #     --changes \
-    ;done ;done
+    
 
 
 
