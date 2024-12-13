@@ -14,6 +14,7 @@ echo "test"
 module load bowtie2/2.5.1
 module load samtools/1.21
 module load pilon/1.23
+module load bwa-mem2/2.2.1
 
 echo "test2"
 
@@ -69,7 +70,7 @@ bwa index $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
- bwa-mem2 \
+bwa-mem2 \
     mem $genome \  
     $fastq_directory/$sample\1_3trimmed_q20.fastq.gz\
     $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
