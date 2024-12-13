@@ -71,9 +71,7 @@ echo $genome
 for sample in "${input_list[@]}"; do
 echo $sample &&
 bwa-mem2 \
-    mem $genome \  
-    $fastq_directory/$sample\1_3trimmed_q20.fastq.gz\
-    $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
+    mem $genome  $fastq_directory/$sample\1_3trimmed_q20.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
     > $output_dir/bwa/$sample\aln-pe.sam &&     
 samtools view -S -b $output_dir/bwa/$sample\aln-pe\.sam > $output_dir/bwa/$sample\aln-pe\.sam.bam &&
 samtools sort $output_dir/bwa/$sample\aln-pe\.sam.bam -o $output_dir/bwa/$sample\aln-pe\_sorted.bam &&
