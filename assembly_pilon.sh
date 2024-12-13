@@ -66,7 +66,7 @@ echo $genome
 #     --fix snps,indels \
 # ; done
 
-bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
+# bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
