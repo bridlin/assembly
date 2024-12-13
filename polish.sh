@@ -41,9 +41,10 @@ echo $fastq_directory
 ## 1. pilon round
 
 
+
 for sample in "${input_list[@]}"; do
 echo $sample &&
-assembly=$assemblydic\/$sample\$assemblyprefix\.fasta &&
+assembly=$assemblydic\/$sample$assemblyprefix\.fasta &&
 echo $assembly &&
 bowtie2-build \
     -f $megahit_assembly $megahit_assembly
