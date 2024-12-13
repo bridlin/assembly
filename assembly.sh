@@ -18,6 +18,7 @@ module load megahit/1.2.9
 module load velvet/1.2.10
 module load spades/3.15.5
 module load multiqc/1.13
+module load bbmap/39.00
 
 source assembly/config.txt
 
@@ -33,7 +34,8 @@ fastqc $fastq_directory/$sample\1.fastq.gz \
     --outdir $output_dir &&
 fastqc $fastq_directory/$sample\2.fastq.gz \
     --outdir $output_dir &&
-cutadapt  -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCA   -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT  \
+### cutadapt to trimm Nextra transposase adapters
+cutadapt  -a TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG   -A GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG  \
     -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
     -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
     $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
@@ -50,8 +52,24 @@ fastqc $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
     --outdir $output_dir &&
 fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
     --outdir $output_dir &&
- megahit -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Megahit_readassembly  \
-spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz -o $output_dir/$sample\_Spades_readassembly &&
+### deduplication
+dedupe.sh \
+    in=$fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
+    in2=$fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
+    out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
+    ac=f \
+    outd=$fastq_directory/$sample\duplicates.fq &&
+reformat.sh \
+    in=out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
+    out1=$fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gzq \
+    out2=$fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz &&
+fastqc $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
+    --outdir $output_dir &&
+fastqc $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz \
+    --outdir $output_dir &&
+### assembly
+megahit -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Megahit_readassembly_dedup  \
+spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Spades_readassembly_dedup &&
 multiqc   \
     $output_dir \
     --outdir $output_dir  \
