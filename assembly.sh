@@ -60,7 +60,7 @@ echo $sample &&
 #     ac=f \
 #     outd=$fastq_directory/$sample\duplicates.fq &&
 reformat.sh \
-    in=out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
+    in=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
     out1=$fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gzq \
     out2=$fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz &&
 fastqc $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
