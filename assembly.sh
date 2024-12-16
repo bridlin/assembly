@@ -59,14 +59,14 @@ echo $sample &&
 #     out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
 #     ac=f \
 #     outd=$fastq_directory/$sample\duplicates.fq &&
-reformat.sh \
-    in=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
-    out1=$fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
-    out2=$fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz &&
-fastqc $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
-    --outdir $output_dir &&
-fastqc $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz \
-    --outdir $output_dir &&
+# reformat.sh \
+#     in=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
+#     out1=$fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
+#     out2=$fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz &&
+# fastqc $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz \
+#     --outdir $output_dir &&
+# fastqc $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz \
+#     --outdir $output_dir &&
 ### assembly
 megahit -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Megahit_readassembly_dedup  \
 spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Spades_readassembly_dedup &&
