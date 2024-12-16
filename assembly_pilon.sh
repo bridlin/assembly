@@ -37,36 +37,36 @@ echo "test5"
 
 echo $genome
 
-# bowtie2-build -f $genome $genome 
+bowtie2-build -f $genome $genome 
 
-# for sample in "${input_list[@]}"; do
-# echo "test6"
-# echo $sample &&
-# bowtie2 \
-#     -x $genome \
-#     -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-#     -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
-#     -S $output_dir/bowtie2/$sample\aln-pe.sam \
-#     2> $output_dir/bowtie2/$sample\_bowtie.log &&
-# samtools view -S -b $output_dir/bowtie2/$sample\aln-pe\.sam > $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
-# samtools sort $output_dir/bowtie2/$sample\aln-pe\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
-# samtools index $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
-# rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam &&
-# rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
-# pilon \
-#     -Xmx32g \
-#     --genome $genome \
-#     --bam $output_dir/bowtie2/$sample\aln-pe\_sorted.bam \
-#     --output $sample\_bowtie_pilon_assembly \
-#     --outdir $output_dir/pilon_assembly \
-#     --threads 4  \
-#     --changes \
-#     --tracks \
-#     --vcf \
-#     --fix snps,indels \
-# ; done
+for sample in "${input_list[@]}"; do
+echo "test6"
+echo $sample &&
+bowtie2 \
+    -x $genome \
+    -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
+    -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
+    -S $output_dir/bowtie2/$sample\aln-pe.sam \
+    2> $output_dir/bowtie2/$sample\_bowtie.log &&
+samtools view -S -b $output_dir/bowtie2/$sample\aln-pe\.sam > $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
+samtools sort $output_dir/bowtie2/$sample\aln-pe\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
+samtools index $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
+rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam &&
+rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
+pilon \
+    -Xmx32g \
+    --genome $genome \
+    --bam $output_dir/bowtie2/$sample\aln-pe\_sorted.bam \
+    --output $sample\_bowtie_pilon_assembly \
+    --outdir $output_dir/pilon_assembly \
+    --threads 4  \
+    --changes \
+    --tracks \
+    --vcf \
+    --fix snps,indels \
+; done
 
-# bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
+bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
