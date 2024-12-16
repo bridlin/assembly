@@ -14,6 +14,7 @@
 module load cutadapt/4.0
 module load multiqc/1.13
 module load bbmap/39.00
+module load fastqc/0.11.9
 
 source assembly/config.txt
 
