@@ -23,7 +23,7 @@ output_dir=assembly_output_2
 mkdir -p $output_dir
 
 for sample in "${input_list[@]}"; do
-    cutadapt  -a CTGTCTCTTATACACATCT+ATGTGTATAAGAGACA -A CTGTCTCTTATACACATCT+ATGTGTATAAGAGACA \
+    cutadapt  -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT \
         -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
         -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
         $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
