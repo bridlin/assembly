@@ -30,35 +30,35 @@ mkdir $output_dir
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-fastqc $fastq_directory/$sample\1.fastq.gz \
-    --outdir $output_dir &&
-fastqc $fastq_directory/$sample\2.fastq.gz \
-    --outdir $output_dir &&
-### cutadapt to trimm Nextra transposase adapters
-cutadapt  -a TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG   -A GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG  \
-    -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
-    -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
-    $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
-    --minimum-length 40 \
-    > $output_dir/$sample\_cutadapt_report.txt &&
-trimmomatic PE \
-    -threads 4 \
-    -trimlog $output_dir/$sample\trim \
-    $fastq_directory/$sample\1_3trimmed.fastq.gz $fastq_directory/$sample\2_3trimmed.fastq.gz \
-    $fastq_directory/$sample\1_3trimmed_q20.fastq.gz   $fastq_directory/$sample\1_3trimmed_q20_un.fastq.gz $fastq_directory/$sample\2_3trimmed_q20.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20_un.fastq.gz \
-    SLIDINGWINDOW:4:20 \
-    MINLEN:40 &&
-fastqc $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-    --outdir $output_dir &&
-fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
-    --outdir $output_dir &&
-### deduplication
-dedupe.sh \
-    in=$fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-    in2=$fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
-    out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
-    ac=f \
-    outd=$fastq_directory/$sample\duplicates.fq &&
+# fastqc $fastq_directory/$sample\1.fastq.gz \
+#     --outdir $output_dir &&
+# fastqc $fastq_directory/$sample\2.fastq.gz \
+#     --outdir $output_dir &&
+# ### cutadapt to trimm Nextra transposase adapters
+# cutadapt  -a TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG   -A GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG  \
+#     -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
+#     -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
+#     $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
+#     --minimum-length 40 \
+#     > $output_dir/$sample\_cutadapt_report.txt &&
+# trimmomatic PE \
+#     -threads 4 \
+#     -trimlog $output_dir/$sample\trim \
+#     $fastq_directory/$sample\1_3trimmed.fastq.gz $fastq_directory/$sample\2_3trimmed.fastq.gz \
+#     $fastq_directory/$sample\1_3trimmed_q20.fastq.gz   $fastq_directory/$sample\1_3trimmed_q20_un.fastq.gz $fastq_directory/$sample\2_3trimmed_q20.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20_un.fastq.gz \
+#     SLIDINGWINDOW:4:20 \
+#     MINLEN:40 &&
+# fastqc $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
+#     --outdir $output_dir &&
+# fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
+#     --outdir $output_dir &&
+# ### deduplication
+# dedupe.sh \
+#     in=$fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
+#     in2=$fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
+#     out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
+#     ac=f \
+#     outd=$fastq_directory/$sample\duplicates.fq &&
 reformat.sh \
     in=out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
     out1=$fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gzq \
