@@ -24,27 +24,43 @@ output_dir=assembly_output_2
 mkdir -p $output_dir
 
 for sample in "${input_list[@]}"; do
-    # cutadapt  -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT \
-    #     -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
-    #     -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
-    #     $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
-    #     --minimum-length 40 \
-    #     > $output_dir/$sample\_cutadapt_report.txt &&
-    # fastqc $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-    #     --outdir $output_dir &&
-    # fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
-    #     --outdir $output_dir &&
+    cutadapt  -a CTGTCTCTTATACACATCT -a AGATGTGTATAAGAGACAG -A CTGTCTCTTATACACATCT -A AGATGTGTATAAGAGACAG \
+        --times 3 \  
+        -o $fastq_directory/$sample\1_3trimmed_2.fastq.gz \
+        -p $fastq_directory/$sample\2_3trimmed_2.fastq.gz  \
+        $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
+        --minimum-length 40 \
+        > $output_dir/$sample\_cutadapt_report_2.txt &&
+    fastqc $fastq_directory/$sample\1_3trimmed.fastq.gz \
+        --outdir $output_dir &&
+    fastqc $fastq_directory/$sample\2_3trimmed.fastq.gz \
+        --outdir $output_dir &&
+    fastqc $fastq_directory/$sample\1_3trimmed_2.fastq.gz \
+        --outdir $output_dir &&
+    fastqc $fastq_directory/$sample\2_3trimmed_2.fastq.gz \
+        --outdir $output_dir &&
     ### clumping reads
     clumpify.sh \
-        in1=$fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-        in2=$fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
-        out1=$fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
-        out2=$fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
+        in1=$fastq_directory/$sample\1_3trimmed.fastq.gz \
+        in2=$fastq_directory/$sample\2_3trimmed.fastq.gz \
+        out1=$fastq_directory/$sample\1_3trimmed_clumped.fastq.gz \
+        out2=$fastq_directory/$sample\2_3trimmed_clumped.fastq.gz \
         dedupe=t \
         optical=f &&
-    fastqc $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
+    clumpify.sh \
+        in1=$fastq_directory/$sample\1_3trimmed_2.fastq.gz \
+        in2=$fastq_directory/$sample\2_3trimmed_2.fastq.gz \
+        out1=$fastq_directory/$sample\1_3trimmed_2_clumped.fastq.gz \
+        out2=$fastq_directory/$sample\2_3trimmed_2_clumped.fastq.gz \
+        dedupe=t \
+        optical=f &&
+    fastqc $fastq_directory/$sample\1_3trimmed_clumped.fastq.gz \
         --outdir $output_dir &&
-    fastqc $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
+    fastqc $fastq_directory/$sample\2_3trimmed_clumped.fastq.gz \
+        --outdir $output_dir &&
+    fastqc $fastq_directory/$sample\1_3trimmed_2_clumped.fastq.gz \
+        --outdir $output_dir &&
+    fastqc $fastq_directory/$sample\2_3trimmed_2_clumped.fastq.gz \
         --outdir $output_dir \
 ;done
 
