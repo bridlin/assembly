@@ -23,13 +23,13 @@ source assembly/config.txt
 echo "test3"
 
 fastq_directory=$run\_fastq
-output_dir=$run\_output
+output_dir=$run\_output_3
 genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
 
 echo "test4"
 
-mkdir -p $output_dir/bowtie2
-mkdir -p $output_dir/bwa
+mkdir -p $output_dir/bowtie2_2
+mkdir -p $output_dir/bwa_2
 mkdir -p $output_dir/pilon_assembly
 
 echo "test5"
@@ -44,20 +44,20 @@ echo "test6"
 echo $sample &&
 bowtie2 \
     -x $genome \
-    -1 $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
-    -2 $fastq_directory/$sample\2_3trimmed_q20.fastq.gz   \
-    -S $output_dir/bowtie2/$sample\aln-pe.sam \
-    2> $output_dir/bowtie2/$sample\_bowtie.log &&
-samtools view -S -b $output_dir/bowtie2/$sample\aln-pe\.sam > $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
-samtools sort $output_dir/bowtie2/$sample\aln-pe\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
-samtools index $output_dir/bowtie2/$sample\aln-pe\_sorted.bam &&
-rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam &&
-rm -f  $output_dir/bowtie2/$sample\aln-pe\.sam.bam &&
+    -1 $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
+    -2 $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz   \
+    -S $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped.sam \
+    2> $output_dir/bowtie2/$sample\_bowtie_3trimmed_q20_clumped.log &&
+samtools view -S -b $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\.sam > $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
+samtools sort $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam -o $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+samtools index $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+rm -f  $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\.sam &&
+rm -f  $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
 pilon \
     -Xmx32g \
     --genome $genome \
-    --bam $output_dir/bowtie2/$sample\aln-pe\_sorted.bam \
-    --output $sample\_bowtie_pilon_assembly \
+    --bam $output_dir/bowtie2/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam \
+    --output $sample\_bowtie_3trimmed_q20_clumped_pilon_assembly \
     --outdir $output_dir/pilon_assembly \
     --threads 4  \
     --changes \
@@ -71,18 +71,18 @@ bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
 for sample in "${input_list[@]}"; do
 echo $sample &&
 bwa-mem2 \
-    mem $genome  $fastq_directory/$sample\1_3trimmed_q20.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
-    > $output_dir/bwa/$sample\aln-pe.sam &&     
-samtools view -S -b $output_dir/bwa/$sample\aln-pe\.sam > $output_dir/bwa/$sample\aln-pe\.sam.bam &&
-samtools sort $output_dir/bwa/$sample\aln-pe\.sam.bam -o $output_dir/bwa/$sample\aln-pe\_sorted.bam &&
-samtools index $output_dir/bwa/$sample\aln-pe\_sorted.bam &&
-rm -f  $output_dir/bwa/$sample\aln-pe\.sam &&
-rm -f  $output_dir/bwa/$sample\aln-pe\.sam.bam &&
+    mem $genome  $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
+    > $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped.sam &&     
+samtools view -S -b $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam > $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
+samtools sort $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam -o $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+samtools index $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+rm -f  $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam &&
+rm -f  $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
 pilon \
     -Xmx100g \
     --genome $genome \
-    --bam $output_dir/bwa/$sample\aln-pe\_sorted.bam \
-    --output $sample\_bwa_pilon_assembly \
+    --bam $output_dir/bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam \
+    --output $sample\_bwa_3trimmed_q20_clumped_pilon_assembly \
     --outdir $output_dir/pilon_assembly \
     --threads 4  \
     --changes \
