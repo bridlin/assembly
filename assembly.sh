@@ -53,7 +53,8 @@ echo $sample &&
 # fastqc $fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
 #     --outdir $output_dir &&
 # ### deduplication
-# dedupe.sh \
+# 
+ \
 #     in=$fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
 #     in2=$fastq_directory/$sample\2_3trimmed_q20.fastq.gz \
 #     out=$fastq_directory/$sample\_3trimmed_q20_dedup.fastq.gz \
@@ -68,7 +69,7 @@ echo $sample &&
 # fastqc $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz \
 #     --outdir $output_dir &&
 ### assembly
-megahit -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Megahit_readassembly_dedup  \
+# megahit -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Megahit_readassembly_dedup  \
 spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20_dedup.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_dedup.fastq.gz -o $output_dir/$sample\_Spades_readassembly_dedup &&
 multiqc   \
     $output_dir \
