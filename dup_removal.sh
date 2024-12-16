@@ -45,7 +45,7 @@ clumpify.sh \
 fastqc $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
     --outdir $output_dir &&
 fastqc $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
-    --outdir $output_dir &&
+    --outdir $output_dir 
 ;done
 
 multiqc   \
