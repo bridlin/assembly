@@ -25,9 +25,9 @@ mkdir -p $output_dir
 
 for sample in "${input_list[@]}"; do
     cutadapt  -a CTGTCTCTTATACACATCT -a AGATGTGTATAAGAGACAG -A CTGTCTCTTATACACATCT -A AGATGTGTATAAGAGACAG \
-        --times 3 \  
         -o $fastq_directory/$sample\1_3trimmed_2.fastq.gz \
         -p $fastq_directory/$sample\2_3trimmed_2.fastq.gz  \
+        -n 3 \
         $fastq_directory/$sample\1.fastq.gz  $fastq_directory/$sample\2.fastq.gz \
         --minimum-length 40 \
         > $output_dir/$sample\_cutadapt_report_2.txt &&
