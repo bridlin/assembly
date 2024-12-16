@@ -41,8 +41,7 @@ for sample in "${input_list[@]}"; do
         out1=$fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
         out2=$fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
         dedupe=t \
-        optical=f \
-        outd=$fastq_directory/$sample\duplicates.fq &&
+        optical=f &&
     fastqc $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
         --outdir $output_dir &&
     fastqc $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
