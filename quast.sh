@@ -23,13 +23,12 @@ source assembly/config.txt
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-quast.py assembly_output_nexteratrim_clumped/$sample\_Megahit_readassembly_clumped/final.contigs.fa \
-    assembly_output_nexteratrim_clumped/$sample\_Spades_readassembly_clumped/scaffolds.fasta \
-    assembly_output_nexteratrim_clumped/$sample\_Spades_readassembly_clumped/contigs.fasta \
+quast.py  assembly_output/pilon_assembly_nondedup/$sample\_bowtie_pilon_assembly.fasta \
+     assembly_output_nexteratrim_clumped_pilon-assembly/$sample\_bwa_3trimmed_q20_clumped_pilon_assembly.fasta \
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
     -1 assembly_fastq/$sample\1_3trimmed_q20_clumped.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20_clumped.fastq.gz \
-    -o assembly_output_nexteratrim_clumped/quast_$sample\output \
+    -o assembly_output_nexteratrim_clumped/quast_$sample\output_pilon_assembly_bwa \
 ; done
 
 # for sample in "${input_list[@]}"; do
