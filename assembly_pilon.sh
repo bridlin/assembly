@@ -37,7 +37,7 @@ echo "test5"
 
 echo $genome
 
-bowtie2-build -f $genome $genome 
+# bowtie2-build -f $genome $genome 
 
 for sample in "${input_list[@]}"; do
 echo "test6"
@@ -66,7 +66,7 @@ pilon \
     --fix snps,indels \
 ; done
 
-bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
+# bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
