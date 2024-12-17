@@ -28,8 +28,8 @@ genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB
 
 echo "test4"
 
-mkdir -p $output_dir/bowtie2_2
-mkdir -p $output_dir/bwa_2
+mkdir -p $output_dir/bowtie2
+mkdir -p $output_dir/bwa
 mkdir -p $output_dir/pilon_assembly
 
 echo "test5"
