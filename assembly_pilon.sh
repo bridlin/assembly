@@ -67,7 +67,6 @@ pilon \
     --changes \
     --tracks \
     --vcf \
-    #--fix snps,indels \
 ; done
 
 # bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
@@ -92,5 +91,4 @@ pilon \
     --changes \
     --tracks \
     --vcf \
-    #--fix snps,indels \
 ; done
