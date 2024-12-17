@@ -23,7 +23,7 @@ source assembly/config.txt
 echo "test3"
 
 fastq_directory=$run\_fastq
-output_dir=$run\_output_3
+output_dir=$run\_output_nexteratrim_clumped
 genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
 
 echo "test4"
