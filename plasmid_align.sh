@@ -29,12 +29,12 @@ bowtie2 \
     -x $genome \
     -1 $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
     -2 $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz  \
-    -S $output\/$x\_plasmid_aligned.sam \
-    2> $output\/$x\_plasmid_aligned.log &&
-samtools view -S -b  $output\/$x\_plasmid_aligned.sam  >  $output\/$x\_plasmid_aligned.bam  &&
-samtools sort  $output\/$x\_plasmid_aligned.bam  -o  $output\/$x\_plasmid_aligned_sorted.bam  &&
-samtools $output\/$x\_plasmid_aligned_sorted.bam   &&
-rm -f $output\/$x\_plasmid_aligned.sam  &&
-rm -f $output\/$x\_plasmid_aligned.bam  ; done
+    -S $output\/$sample\_plasmid_aligned.sam \
+    2> $output\/$sample\_plasmid_aligned.log &&
+samtools view -S -b  $output\/$sample\_plasmid_aligned.sam  >  $output\/$sample\_plasmid_aligned.bam  &&
+samtools sort  $output\/$sample\_plasmid_aligned.bam  -o  $output\/$sample\_plasmid_aligned_sorted.bam  &&
+samtools $output\/$sample\_plasmid_aligned_sorted.bam   &&
+rm -f $output\/$sample\_plasmid_aligned.sam  &&
+rm -f $output\/$sample\_plasmid_aligned.bam  ; done
 
 
