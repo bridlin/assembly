@@ -40,7 +40,7 @@ echo $sample &&
 assembly=$assemblydic\/$sample\_$assemblyprefix\.fasta &&
 echo $assembly &&
 bwa-mem2 index -p  $assembly $assembly &&
-bwa-mem2 mem $assembly $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq   \
+bwa-mem2 mem $assembly $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz   \
     > $assemblydic\/bwa/$sample\aln-pe_$assemblyprefix\.sam &&
 samtools view -S -b $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam > $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam &&
 samtools sort $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam -o $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam &&
