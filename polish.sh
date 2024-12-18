@@ -18,11 +18,11 @@ module load pilon/1.23
 source assembly/config.txt
 
 fastq_directory=$run\_fastq
-output_dir=assembly_output_nexteratrim_clumped_pilon-assembly
+output_dir=assembly_output_nexteratrim_clumped_pilon-assembly_fix-all
 
 
 
-assemblydic=assembly_output_nexteratrim_clumped_pilon-assembly
+assemblydic=assembly_output_nexteratrim_clumped_pilon-assembly_fix-all
 assemblyprefix=bwa_3trimmed_q20_clumped_pilon_assembly
 
 
