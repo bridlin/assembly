@@ -27,7 +27,7 @@ quast.py  assembly_output/pilon_assembly_nondedup/$sample\_bwa_pilon_assembly.fa
     -r ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta \
     -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Orf50.gff \
     -1 assembly_fastq/$sample\1_3trimmed_q20_clumped.fastq.gz -2 assembly_fastq/$sample\2_3trimmed_q20_clumped.fastq.gz \
-    -o assembly_output_nexteratrim_clumped/quast_$sample\output_pilon_assembly_bwa \
+    -o assembly_output_nexteratrim_clumped/quast_$sample\output_pilon_assembly_bwa_woClumpy \
 ; done
 
 # for sample in "${input_list[@]}"; do
