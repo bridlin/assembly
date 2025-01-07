@@ -30,15 +30,15 @@ mkdir $output_dir
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-fastqc $fastq_directory/$sample\1.fastq.gz \
-    --outdir $output_dir &&
-### cutadapt to trimm Nextra transposase adapters
-cutadapt  -a CTGTCTCTTATACACATCT -a AGATGTGTATAAGAGACAG  \
-    -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
-    $fastq_directory/$sample\1.fastq.gz  \
-    --minimum-length 40 \
-    > $output_dir/$sample\_cutadapt_report.txt &&
-trimmomatic PE \
+# fastqc $fastq_directory/$sample\1.fastq.gz \
+#     --outdir $output_dir &&
+# ### cutadapt to trimm Nextra transposase adapters
+# cutadapt  -a CTGTCTCTTATACACATCT -a AGATGTGTATAAGAGACAG  \
+#     -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
+#     $fastq_directory/$sample\1.fastq.gz  \
+#     --minimum-length 40 \
+#     > $output_dir/$sample\_cutadapt_report.txt &&
+trimmomatic SE \
     -threads 4 \
     -trimlog $output_dir/$sample\trim \
     $fastq_directory/$sample\1_3trimmed.fastq.gz  \
