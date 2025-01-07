@@ -7,7 +7,7 @@
 #
 #
 #SBATCH --partition fast
-#SBATCH --cpusr-task 4
+#SBATCH --cpus-per-task 4
 #SBATCH --mem  128GB
 
 echo "test"
