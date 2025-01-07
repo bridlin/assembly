@@ -42,7 +42,7 @@ trimmomatic SE \
     -threads 4 \
     -trimlog $output_dir/$sample\trim \
     $fastq_directory/$sample\1_3trimmed.fastq.gz  \
-    $fastq_directory/$sample\1_3trimmed_q20.fastq.gz   $fastq_directory/$sample\1_3trimmed_q20_un.fastq.gz \
+    $fastq_directory/$sample\1_3trimmed_q20.fastq.gz  \
     SLIDINGWINDOW:4:20 \
     MINLEN:40 &&
 fastqc $fastq_directory/$sample\1_3trimmed_q20.fastq.gz \
