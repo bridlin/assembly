@@ -17,8 +17,8 @@ module load  samtools/1.13
 source assembly/config.txt
 
 fastq_directory=$run\_fastq
-genome=plasmids/22pGL2399.fa
-output=plasmid_mapping_22pGL2399-f9
+genome=plasmids/23pTB007_Cas9_T7_Tub.fa
+output=plasmid_mapping_23pTB007_Cas9_T7_Tub-f9
 
 mkdir -p $output
 
