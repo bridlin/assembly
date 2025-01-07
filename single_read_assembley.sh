@@ -57,7 +57,6 @@ fastqc $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
     --outdir $output_dir &&
 ## assembly
 megahit --read $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz  -o $output_dir/$sample\_Megahit_readassembly_clumped  \
-# spades.py --isolate -1 $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz -2 $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz -o $output_dir/$sample\_Spades_readassembly_clumped \
 ;done
 
 multiqc   \
