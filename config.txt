@@ -1,3 +1,3 @@
 run=assembly
-input_list=("F8_" "F7_" "F6_" )
+input_list=("F9_" )
 iter_list=("1" "2")
