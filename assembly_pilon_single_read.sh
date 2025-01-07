@@ -23,14 +23,14 @@ source assembly/config.txt
 echo "test3"
 
 fastq_directory=$run\_fastq
-output_dir=$run\_output_nexteratrim_clumped
+output_dir=$run\_output_nexteratrim_clumped_pilon_f9
 genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
 
 echo "test4"
 
-output_bwa=$output_dir\_bwa_f9 
-output_bowtie=$output_dir\_bowtie2_f9
-output_pilon=$output_dir\_pilon-assembly_f9
+output_bwa=$output_dir\/bwa_f9 
+output_bowtie=$output_dir\/bowtie2_f9
+output_pilon=$output_dir\/pilon-assembly_f9
 
 mkdir -p $output_bwa
 mkdir -p $output_bowtie

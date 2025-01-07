@@ -28,9 +28,9 @@ genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB
 
 echo "test4"
 
-output_bwa=$output_dir\_bwa 
-output_bowtie=$output_dir\_bowtie2_2
-output_pilon=$output_dir\_pilon-assembly_fix-all
+output_bwa=$output_dir\_bwa_f9-pe
+output_bowtie=$output_dir\_bowtie2_f9-pe
+output_pilon=$output_dir\_pilon-assembly_f9-pe
 
 mkdir -p $output_bwa
 mkdir -p $output_bowtie
