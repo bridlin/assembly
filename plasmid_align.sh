@@ -18,13 +18,13 @@ source assembly/config.txt
 
 fastq_directory=$run\_fastq
 genome=plasmids/22pGL2399.fa
-output=plasmid_mapping_22pGL2399
+output=plasmid_mapping_22pGL2399-f9
 
 mkdir -p $output
 
 for sample in "${input_list[@]}"; do
-bowtie2-build \
-    -f $genome $genome &&
+# bowtie2-build \
+#     -f $genome $genome &&
 bowtie2 \
     -x $genome \
     -1 $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz \
