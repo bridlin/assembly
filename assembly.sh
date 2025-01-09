@@ -23,7 +23,7 @@ module load bbmap/39.00
 source assembly/config.txt
 
 fastq_directory=$run\_fastq
-output_dir=$run\_output_f9_pe
+output_dir=$run\_output_ERR174230
 
 mkdir $output_dir
 

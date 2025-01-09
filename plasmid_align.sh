@@ -33,7 +33,7 @@ bowtie2 \
     2> $output\/$sample\_plasmid_aligned.log &&
 samtools view -S -b  $output\/$sample\_plasmid_aligned.sam  >  $output\/$sample\_plasmid_aligned.bam  &&
 samtools sort  $output\/$sample\_plasmid_aligned.bam  -o  $output\/$sample\_plasmid_aligned_sorted.bam  &&
-samtools $output\/$sample\_plasmid_aligned_sorted.bam   &&
+samtools index $output\/$sample\_plasmid_aligned_sorted.bam   &&
 rm -f $output\/$sample\_plasmid_aligned.sam  &&
 rm -f $output\/$sample\_plasmid_aligned.bam  ; done
 
