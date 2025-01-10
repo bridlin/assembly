@@ -24,14 +24,14 @@ echo "test3"
 
 fastq_directory=$run\_fastq
 
-#genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
-genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta'
+genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
+# genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta'
 echo "test4"
 
-output_dir=$run\_output_nexteratrim_clumped_LmexicanaMHOMGT2001U1103
-output_bwa=$output_dir\/bwa_LmexicanaMHOMGT2001U1103
-output_bowtie=$output_dir\/bowtie2_LmexicanaMHOMGT2001U1103
-output_pilon=$output_dir\/pilon-assembly_LmexicanaMHOMGT2001U1103
+output_dir=$run\_output_nexteratrim_clumped_ERR174230
+output_bwa=$output_dir\/bwa_ERR174230
+output_bowtie=$output_dir\/bowtie2_ERR174230
+output_pilon=$output_dir\/pilon-assembly_ERR174230
 
 mkdir -p $output_bwa
 mkdir -p $output_bowtie
