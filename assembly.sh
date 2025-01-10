@@ -30,11 +30,11 @@ mkdir $output_dir
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-fastqc $fastq_directory/$sample\1.fastq.gz \
-    --outdir $output_dir &&
-fastqc $fastq_directory/$sample\2.fastq.gz \
-    --outdir $output_dir &&
-### cutadapt to trimm Nextra transposase adapters
+# fastqc $fastq_directory/$sample\1.fastq.gz \
+#     --outdir $output_dir &&
+# fastqc $fastq_directory/$sample\2.fastq.gz \
+#     --outdir $output_dir &&
+# ### cutadapt to trimm Nextra transposase adapters
 cutadapt  -a CTGTCTCTTATACACATCT -a AGATGTGTATAAGAGACAG -A CTGTCTCTTATACACATCT -A AGATGTGTATAAGAGACAG \
     -o $fastq_directory/$sample\1_3trimmed.fastq.gz \
     -p $fastq_directory/$sample\2_3trimmed.fastq.gz  \
