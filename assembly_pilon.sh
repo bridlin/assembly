@@ -24,13 +24,13 @@ echo "test3"
 
 fastq_directory=$run\_fastq
 output_dir=$run\_output_nexteratrim_clumped_f9-pe
-genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
-
+#genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta'
+genome='../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta'
 echo "test4"
 
-output_bwa=$output_dir\_bwa_f9-pe
-output_bowtie=$output_dir\_bowtie2_f9-pe
-output_pilon=$output_dir\_pilon-assembly_f9-pe
+output_bwa=$output_dir\/bwa_f9-pe
+output_bowtie=$output_dir\/bowtie2_f9-pe
+output_pilon=$output_dir\/pilon-assembly_LmexicanaMHOMGT2001U1103
 
 mkdir -p $output_bwa
 mkdir -p $output_bowtie
@@ -41,7 +41,7 @@ echo "test5"
 
 echo $genome
 
-# bowtie2-build -f $genome $genome 
+bowtie2-build -f $genome $genome 
 
 for sample in "${input_list[@]}"; do
 echo "test6"
@@ -69,7 +69,7 @@ pilon \
     --vcf \
 ; done
 
-# bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
+bwa-mem2 index  -p TriTrypDB-68_LinfantumJPCM5_Genome $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
