@@ -70,7 +70,7 @@ echo $genome
 #     --vcf \
 # ; done
 
-bwa-mem2 index  -p TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome $genome
+bwa-mem2 index  -p ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
