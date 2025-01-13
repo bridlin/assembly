@@ -70,18 +70,18 @@ echo $genome
 #     --vcf \
 # ; done
 
-bwa-mem2 index  -p ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta $genome
+# bwa-mem2 index  -p ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LmexicanaMHOMGT2001U1103/TriTrypDB-68_LmexicanaMHOMGT2001U1103_Genome.fasta $genome
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
-bwa-mem2 \
-    mem $genome  $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
-    > $output_bwa/$sample\aln-pe_3trimmed_q20_clumped.sam &&     
-samtools view -S -b $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam > $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
-samtools sort $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam -o $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
-samtools index $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
-rm -f  $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam &&
-rm -f  $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
+# bwa-mem2 \
+#     mem $genome  $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz  $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz \
+#     > $output_bwa/$sample\aln-pe_3trimmed_q20_clumped.sam &&     
+# samtools view -S -b $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam > $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
+# samtools sort $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam -o $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+# samtools index $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\_sorted.bam &&
+# rm -f  $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam &&
+# rm -f  $output_bwa/$sample\aln-pe_3trimmed_q20_clumped\.sam.bam &&
 pilon \
     -Xmx100g \
     --genome $genome \
