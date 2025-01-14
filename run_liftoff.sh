@@ -18,5 +18,6 @@ liftoff \
 -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5.gff \
 -chroms chroms_for_liftoff.csv   \
 -o  LinS9F1T7Cas9.gff  \
+-f features.txt \
 ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta  \
 assembly_output_nexteratrim_clumped_pilon-assembly_fix-all/pilon/LinS9F1T7Cas9.fasta
