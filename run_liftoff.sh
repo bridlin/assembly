@@ -16,7 +16,7 @@ module load liftoff/1.6.3
 
 liftoff \
 -g ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5.gff \
--chroms chroms_for_liftoff.csv   \
+-chroms chroms_lift.txt   \
 -o  LinS9F1T7Cas9.gff  \
 -f features.txt \
 ../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta  \
