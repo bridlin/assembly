@@ -19,5 +19,5 @@ liftoff \
 -chroms chroms_lift.txt   \
 -o  LinS9F1T7Cas9.gff  \
 -f features.txt \
-../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta  \
-assembly_output_nexteratrim_clumped_pilon-assembly_fix-all/pilon/LinS9F1T7Cas9.fasta
+assembly_output_nexteratrim_clumped_pilon-assembly_fix-all/pilon/LinS9F1T7Cas9.fasta \
+../chu_diag_microbiom_setup/genome/TriTrypDB-68_LinfantumJPCM5/TriTrypDB-68_LinfantumJPCM5_Genome.fasta
