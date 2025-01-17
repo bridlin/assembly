@@ -22,9 +22,9 @@ output_dir=assembly_output_nexteratrim_clumped_pilon-assembly_fix-all
 
 
 
-assemblydic=assembly_output_nexteratrim_clumped_pilon-assembly_fix-all
+assemblydic=Leish_genomeassembly/assembly_output_pilon_nexteratrim_clumped_pilon-assembly_f6-f8/bwa_pilon_assembly
 assemblyprefix=bwa_3trimmed_q20_clumped_pilon_assembly
-
+_bwa_3trimmed_q20_clumped_pilon_assembly
 
 echo $assemblydic
 echo $output_dir
@@ -32,30 +32,31 @@ echo $fastq_directory
 
 ## 1. pilon round
 
-mkdir -p $assemblydic\/bwa
-mkdir -p $assemblydic\/pilon
+# mkdir -p $assemblydic\/bwa
+mkdir -p $assemblydic\/bwa_pilon_polish
 
 for sample in "${input_list[@]}"; do
 echo $sample &&
 assembly=$assemblydic\/$sample\_$assemblyprefix\.fasta &&
-echo $assembly &&
-bwa-mem2 index -p  $assembly $assembly &&
-bwa-mem2 mem $assembly $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz   \
-    > $assemblydic\/bwa/$sample\aln-pe_$assemblyprefix\.sam &&
-samtools view -S -b $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam > $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam &&
-samtools sort $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam -o $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam &&
-samtools index $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam &&
-rm -f  $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam &&
-rm -f  $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam &&
+# echo $assembly &&
+# bwa-mem2 index -p  $assembly $assembly &&
+# bwa-mem2 mem $assembly $fastq_directory/$sample\1_3trimmed_q20_clumped.fastq.gz $fastq_directory/$sample\2_3trimmed_q20_clumped.fastq.gz   \
+#     > $assemblydic\/bwa/$sample\aln-pe_$assemblyprefix\.sam &&
+# samtools view -S -b $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam > $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam &&
+# samtools sort $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam -o $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam &&
+# samtools index $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam &&
+# rm -f  $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam &&
+# rm -f  $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\.sam.bam &&
 pilon \
     -Xmx8g \
     --genome $assembly \
     --bam $assemblydic\/bwa/$sample\aln-pe\_$assemblyprefix\_sorted.bam \
     --output $sample\_pilon_$assemblyprefix\_1 \
-    --outdir $assemblydic\/pilon \
+    --outdir $assemblydic\/bwa_pilon_polish \
     --threads 4  \
     --changes \
     --tracks \
+    -- vcfs \
 ; done
 
 # for sample in "${input_list[@]}"; do
