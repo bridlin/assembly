@@ -24,7 +24,7 @@ output_dir=assembly_output_nexteratrim_clumped_pilon-assembly_fix-all
 
 assemblydic=Leish_genomeassembly/assembly_output_pilon_nexteratrim_clumped_pilon-assembly_f6-f8/bwa_pilon_assembly
 assemblyprefix=bwa_3trimmed_q20_clumped_pilon_assembly
-_bwa_3trimmed_q20_clumped_pilon_assembly
+
 
 echo $assemblydic
 echo $output_dir
@@ -56,7 +56,7 @@ pilon \
     --threads 4  \
     --changes \
     --tracks \
-    -- vcfs \
+    -- vcf \
 ; done
 
 # for sample in "${input_list[@]}"; do
