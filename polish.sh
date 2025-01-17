@@ -56,7 +56,7 @@ pilon \
     --threads 4  \
     --changes \
     --tracks \
-    -- vcf \
+    --vcf \
 ; done
 
 # for sample in "${input_list[@]}"; do
